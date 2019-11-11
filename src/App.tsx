@@ -1,13 +1,10 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { theme } from './Styles/Theme';
 import Reset from './Styles/Reset';
-
-const Container = styled.div`
-  background: red;
-  ${props=> props.theme.font}
-`;
+import About from './Components/Pages/About';
+import Home from './Components/Pages/Home'
 
 const GlobalStyles = createGlobalStyle`
   ${Reset}
@@ -17,9 +14,12 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Container>
-        asdf
-      </Container>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+        </Switch>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
