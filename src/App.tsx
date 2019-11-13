@@ -11,6 +11,11 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const App: React.FC = () => {
+
+  fetch('http://localhost:4000/api/hello')
+    .then(res=> { console.log(res); return res.json() })
+    .then(json=> console.log(json))
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
